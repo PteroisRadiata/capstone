@@ -1,7 +1,12 @@
 # utils/inference.py
+import os
+os.environ["ULTRALYTICS_SETTINGS"] = "False"
+os.environ["YOLO_VERBOSE"] = "False"
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
 print("Inference module loaded")
 
-import os
+
 os.environ["OPENCV_VIDEOIO_DISABLE"] = "1"
 os.environ["OPENCV_OPENGL_SUPPORT"] = "0"
 os.environ["OPENCV_ENABLE_NONFREE"] = "0"
@@ -9,7 +14,7 @@ os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "0"
 
 import numpy as np
 import cv2
-from ultralytics import YOLO
+
 from utils.conversions import get_city_conversion
 import streamlit as st
 
@@ -21,6 +26,7 @@ MODEL_PATH = "/tmp/best.pt"
 
 @st.cache_resource
 def load_model(_sup):
+    from ultralytics import YOLO
     # download pt from supabase
     path = download_model_from_supabase(_sup)
     # load YOLO model from that path

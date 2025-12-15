@@ -13,7 +13,7 @@ os.environ["OPENCV_ENABLE_NONFREE"] = "0"
 os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "0"
 
 import numpy as np
-import cv2
+
 
 from utils.conversions import get_city_conversion
 import streamlit as st
@@ -51,6 +51,7 @@ def download_model_from_supabase(supabase, bucket="models", filename="best.pt"):
 
 # find_roof_shapes
 def find_roof_shapes(predicted, og_size = (256, 256)): 
+    import cv2
   # IN: predicted is instance of ultralytics.engine.results.Results
   # OUT: number of roof pixels
 

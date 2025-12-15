@@ -51,7 +51,7 @@ def download_model_from_supabase(supabase, bucket="models", filename="best.pt"):
 
 # find_roof_shapes
 def find_roof_shapes(predicted, og_size = (256, 256)): 
-    import cv2
+  import cv2
   # IN: predicted is instance of ultralytics.engine.results.Results
   # OUT: number of roof pixels
 
